@@ -13,13 +13,6 @@ module Control_Module(Op_Code, funct, Reg_Write_D, MemToReg_D, Mem_Write_D, ALUC
 
     always@(Op_Code, funct, Shamt_in)
     begin
-  /*      Reg_Write_D <= 1'bz;
-        MemToReg_D <= 1'bz;
-        Mem_Write_D <= 1'bz;
-        ALU_Src_D <= 1'bz;
-        Reg_Dest_D <= 1'bz;
-        Branch_D <= 1'bz;
-        ALUCon <= 4'bz; */
 
         // R-Type Ins
         if(Op_Code == 6'b0)
@@ -48,20 +41,6 @@ module Control_Module(Op_Code, funct, Reg_Write_D, MemToReg_D, Mem_Write_D, ALUC
             Reg_Dest_D = 1'bz;
             Shamt_D = 5'bz;
         end
-
-    /*    //bne
-        if(Op_Code == 6'd5)
-        begin                   //Check Hazard unit for Forward AD and BD
-            ALUCon = 6'bz;
-            Reg_Write_D = 1'bz;
-            MemToReg_D = 1'bz;
-            Mem_Write_D = 1'bz;
-            ALU_Src_D = 1'bz;
-            Branch_D = 1'b1;
-            Reg_Dest_D = 1'bz;
-            Shamt_D = 5'bz;
-        end  */
-
 
         //addi
         if(Op_Code == 6'd8)
@@ -115,19 +94,6 @@ module Control_Module(Op_Code, funct, Reg_Write_D, MemToReg_D, Mem_Write_D, ALUC
             Reg_Dest_D = 1'b0;
             Shamt_D = 5'bz;
         end
-
-/*        //lui
-        if(Op_Code == 6'd10)
-        begin                   //Check Hazard unit for Forward AE.
-            ALUCon = 6'd15;
-            Reg_Write_D = 1'b1;
-            MemToReg_D = 1'b0;
-            Mem_Write_D = 1'bz;
-            ALU_Src_D = 1'b1;
-            Branch_D = 1'b0;
-            Reg_Dest_D = 1'b0;
-            Shamt_D = 5'd16;
-        end  */
 
         //lw
         if(Op_Code == 6'd35)
