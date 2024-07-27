@@ -12,20 +12,26 @@ module Data_Mem(clk, Data_in, data_add, en_write, data_out);
 
     integer i;
 
-    initial 
-        $readmemb("data_mem.txt", Mem, 0, MEM_WIDTH-1);
+    initial begin
+        // Initialize the memory with predefined values
+        Mem[0] = 32'b00000000000000000000000001010101;
+        Mem[1] = 32'b00000000000000000000000000101111;
+        Mem[2] = 32'b00000000000000000000000111001110;
+        Mem[3] = 32'b00000000000000000000001011100101;
+        Mem[4] = 32'b00000000000000000000000000010100;
+        Mem[5] = 32'b00000000000000000000000001001000;
         
+        // Initialize the rest of the memory to 0
+        for (i = 6; i < MEM_WIDTH; i = i + 1) begin
+            Mem[i] = 32'b0;
+        end
+    end
 
-    always@(negedge clk)
-    begin
-
-        if(en_write)
+    always @(negedge clk) begin
+        if (en_write)
             Mem[data_add] <= Data_in;
         else
             data_out <= Mem[data_add];
-
-     //   $writememb("data_mem.txt", Mem);
     end
-
 
 endmodule

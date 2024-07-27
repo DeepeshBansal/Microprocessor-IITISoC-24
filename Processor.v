@@ -10,7 +10,7 @@
 `include "ID_EX_Reg.v"
 `include "IF_ID_Reg.v"
 `include "Instruction_Memory.v" 
-`include "MEM_WB_Reg.v"
+`include "MEM_WEB_Reg.v"
 `include "MUX2_to_1_5bit.v"
 `include "MUX2_to_1_32bit.v"
 `include "MUX3_to_1_32bit.v"
